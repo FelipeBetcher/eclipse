@@ -31,7 +31,7 @@ bot.on('message', message => {
         }*/
 
         if(message.content.startsWith(prefixo + "fale")){
-          message.channel.send(message.content.slice(6))
+          message.channel.send(message.content.slice(5))
         }
 
         if(message.content.startsWith(prefixo + "apagar")){
