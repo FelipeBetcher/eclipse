@@ -21,17 +21,17 @@ bot.on('message', message => {
     const modlog = bot.channels.get('427598627855269898');
 
         /*if(message.content.startsWith(prefixo + "dev")){
-          if(!message.content.slice(6)) return message.channel.send("Escreva algo")
-          if(message.content.slice(6)){
+          if(!message.content.slice(5)) return message.channel.send("Escreva algo")
+          if(message.content.slice(5)){
           bot.users.get(liderid).send(new Discord.RichEmbed()
           .setColor(0x4286f4)
           .setAuthor(message.author.tag, message.author.displayAvatarURL)
-          .setDescription(message.content.slice(6))
+          .setDescription(message.content.slice(5))
           .setFooter("Comando: 2!dev"));}
         }*/
 
         if(message.content.startsWith(prefixo + "fale")){
-          message.channel.send(message.content.slice(7))
+          message.channel.send(message.content.slice(6))
         }
 
         if(message.content.startsWith(prefixo + "apagar")){
