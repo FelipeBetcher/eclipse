@@ -8,11 +8,11 @@ bot.on('ready', () => {
     bot.user.setStatus('dnd');
 });
 
-bot.on('guildMemberAdd', member => {
+/*bot.on('guildMemberAdd', member => {
     member.send("teste");
     var cargo = message.guild.roles.find("name", "Discord Members") ;
     member.addRole(cargo)
-});
+});*/
 
 bot.on('message', message => {
     var args = message.content.substring(prefixo.length).split(" ");
@@ -30,9 +30,64 @@ bot.on('message', message => {
           .setFooter("Comando: 2!dev"));}
         }*/
 
-        if(message.content.startsWith(prefixo + "fale")){
-          message.channel.send(message.content)
+        if(message.content.startsWith(prefixo + "minecraft")){
+          message.author.send(new Discord.RichEmbed()
+          .setTitle("Deseja comprar alguma conta de Minecraft Unmigrated?")
+          .setDescription(`**Preço:** R$15,00\n**Minecraft Unmigrated + Capa da Optifine:** R$35,00\n**Capa da Optifine:** R$20,00\n\n[Acesse nosso site](https://discordapp.com/) ou entre em contato com dragon#1000`)
+          .setColor(message.member.highestRole.hexColor))
         }
+
+        if(message.content.startsWith(prefixo + "spotify")){
+          message.author.send(new Discord.RichEmbed()
+          .setTitle("Deseja comprar algum Spotify Premium?")
+          .setDescription(`**Preço Normal:** R$2,90\n**1 Unidade:** R$2,90\n**3 Unidades:**  R$3,90\n**5 Unidades:** R$5,90\n**10 Unidades:** R$7,90\n**50 Unidades:** R$15,00\n**100 Unidades:** R$29,90\n\n[Acesse nosso site](https://discordapp.com/) ou entre em contato com dragon#1000`)
+          .setColor(message.member.highestRole.hexColor))
+        }
+
+        if(message.content.startsWith(prefixo + "canal")){
+          let canal = message.mentions.channels.first()
+          if (canal){
+          var a = message.content.slice(prefixo.length)
+          var y = a.indexOf(">")
+          var f = a.slice(y + 1)
+          if (f){
+          canal.send(f).catch(erro => message.channel.send(`Não tenho permissão para enviar mensagem no canal ${canal}`)).catch(erro => message.author.send('Não posso enviar mensagens nos canais: `' + message.channel.name + "`, `" + canal.name +"`"));
+          }if (!f){
+            message.channel.send("Escreva alguma mensagem para eu poder enviar").catch(erro => message.author.send('Não posso enviar mensagens no canal: `' + message.channel.name + "`"))
+          }}
+          if (!canal){
+            var k = message.content.slice(prefixo.length + 6)
+            if (k){
+           message.channel.send(k).catch(erro => message.author.send('Não posso enviar mensagens no canal: `' + message.channel.name + "`"))
+         }if (!k){
+           message.channel.send("Escreva alguma mensagem para eu poder enviar").catch(erro => message.author.send('Não posso enviar mensagens no canal: `' + message.channel.name + "`"))
+         }}}
+
+         if(message.content.startsWith(prefixo + "user")){
+           let u = message.mentions.users.first()
+           var a = message.content.slice(prefixo.length)
+           var y = a.indexOf(">")
+           var f = a.slice(y + 1)
+           if (!u){
+               message.channel.send("Mencione um usuário")
+           }
+           if (u){
+           if(f){
+             u.send(f)
+             message.channel.send("Mensagem enviada")
+           }
+           if(!f){
+             message.channel.send("Escreva alguma mensagem para eu poder enviar")
+           }}}
+
+        if(message.content.startsWith(prefixo + "fale")){
+          var y = message.content.slice(6)
+          if (y){
+          message.channel.send(y)
+        }
+          if(!y){
+            message.channel.send("Escreva alguma mensagem para eu poder enviar")
+          }}
 
         if(message.content.startsWith(prefixo + "apagar")){
           var cargu = message.guild.roles.find("name", "MOD")
